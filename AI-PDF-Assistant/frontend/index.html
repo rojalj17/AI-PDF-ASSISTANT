@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Reading Desk — AI PDF Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="deskframe">
+
+  <!-- ================= HEADER ================= -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">§</span>
+      <div class="brand-text">
+        <h1>The Reading Desk</h1>
+        <p>Ask your documents anything</p>
+      </div>
+    </div>
+
+    <button class="stamp" id="statusStamp" title="Connection settings">
+      <span class="stamp-dot" id="statusDot"></span>
+      <span class="stamp-label" id="statusLabel">LOCAL ACCESS</span>
+    </button>
+  </header>
+
+  <!-- ================= SETTINGS DRAWER ================= -->
+  <div class="settings-drawer" id="settingsDrawer">
+    <div class="settings-inner">
+      <h3>Backend connection</h3>
+      <p class="settings-hint">
+        Point this page at the machine running <code>server.py</code> —
+        e.g. <code>http://localhost:8000</code> or a tunnel URL if this
+        page is hosted elsewhere.
+      </p>
+      <div class="settings-row">
+        <input type="text" id="backendUrlInput" placeholder="http://localhost:8000" spellcheck="false">
+        <button id="saveBackendUrl">Save</button>
+      </div>
+      <p class="settings-status" id="settingsStatus"></p>
+    </div>
+  </div>
+
+  <!-- ================= MAIN LAYOUT ================= -->
+  <main class="layout">
+
+    <!-- ---------- CATALOG (sidebar) ---------- -->
+    <aside class="catalog">
+      <h2 class="catalog-title">Catalog</h2>
+
+      <label class="dropzone" id="dropzone" for="fileInput">
+        <span class="dropzone-icon">+</span>
+        <span class="dropzone-text">Drop PDFs here<br><span class="dropzone-sub">or click to browse</span></span>
+        <input type="file" id="fileInput" accept=".pdf" multiple hidden>
+      </label>
+
+      <div class="upload-status" id="uploadStatus"></div>
+
+      <div class="card-drawer" id="cardDrawer">
+        <p class="empty-note" id="emptyNote">No documents indexed yet.</p>
+      </div>
+
+      <button class="clear-btn" id="clearBtn">Clear catalog</button>
+    </aside>
+
+    <!-- ---------- READING DESK (chat) ---------- -->
+    <section class="desk">
+      <div class="ledger" id="ledger">
+        <div class="ledger-welcome">
+          <p>Upload a document on the left, index it, then ask a question below.
+          Answers are drawn only from what you've indexed.</p>
+        </div>
+      </div>
+
+      <form class="composer" id="composer">
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Ask a question about your documents…"
+          autocomplete="off"
+        >
+        <button type="submit" id="sendBtn">
+          <span>File</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M1 7H13M13 7L8 2M13 7L8 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+    </section>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+﻿.venv/
+__pycache__/
+*.pyc
+.vscode/
+.env
+
+backend/data/chroma/
+backend/data/pdfs/
+
+data/chroma/
+data/pdfs/
+
+patch_app.py

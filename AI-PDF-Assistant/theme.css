@@ -1,0 +1,17 @@
+/* Optional extra styling — not loaded by default.
+   To use: pass css=open("assets/theme.css").read() into gr.Blocks() in app.py,
+   or merge these rules into the CUSTOM_CSS string in app.py. */
+
+.gradio-container {
+    max-width: 1100px !important;
+    margin: auto;
+}
+
+#status_box {
+    font-size: 0.85em;
+    line-height: 1.4;
+}
+
+.gr-button-primary {
+    font-weight: 600;
+}
